@@ -1,0 +1,34 @@
+{
+    "name": "agsystemspl/esi-rest-client",
+    "version": "0.9.0",
+    "description": "ESI OAuth2 Client.",
+    "keywords": ["esi", "rest", "api", "eve online"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paweł Feruś",
+            "email": "mindc@o2.pl"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=7.0",
+        "agsystemspl/abstract-rest-client": "dev-master",
+        "agsystemspl/oauth2-esi": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "AGSystems\\Esi\\REST\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/agsystemspl/abstract-rest-client"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/agsystemspl/oauth2-esi"
+        }
+    ]
+}
