@@ -2,9 +2,8 @@
 
 namespace AGSystems\Esi\REST;
 
-use GuzzleHttp\Psr7\Response;
 use League\OAuth2\Client\Provider\AbstractProvider;
-use AGSystems\OAuth2\Client\Token\AccessTokenInterface;
+use AGSystems\Esi\REST\Account\Token\AccessTokenInterface;
 
 class Client extends \AGSystems\REST\AbstractClient
 {
@@ -27,14 +26,14 @@ class Client extends \AGSystems\REST\AbstractClient
         $this->provider = $provider;
     }
 
-    protected function withOptions(): array
+    protected function clientOptions()
     {
         if ($this->accessToken->hasExpired()) {
             $accessToken = $this->provider->getAccessToken('refresh_token', [
                 'refresh_token' => $this->accessToken->getRefreshToken()
             ]);
 
-            $accessToken->saveAuth($accessToken);
+            $this->accessToken->saveAuth($accessToken);
         }
 
         return [
